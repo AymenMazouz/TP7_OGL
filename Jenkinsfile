@@ -1,18 +1,23 @@
 pipeline {
-    agent any
-    stages {
-        stage('test') {
+      agent any
+      stages {
+        stage ('test') {
             steps {
                 bat './gradlew test'
             }
         }
-    }
-    post {
-        success {
-            script {
-                def notifyToken = 'bbothk34jxh5juwrihmvlevopelrzlnf'
-                sh "curl -X POST -H 'Content-Type: application/json' -d '{\"text\":\"Build réussi\"}' https://api.notify.events/v1/jenkins/${notifyToken}"
-            }
+        stage("notification") {
+            steps {
+                    notifyEvents message: 'Pipeline <b> is sucessufuly termined</b>', token: 'bbothk34jxh5juwrihmvlevopelrzlnf'
+                    mail bcc: '', body: 'Pipeline <b> is sucessufuly termined</b>', cc: '', from: '', replyTo: '', subject: 'process Success', to: 'ka_mazouz@esi.dz'
+          }
         }
-    }
+      }
+
+      post {
+         failure {
+                   mail bcc: '', body: 'process Failed!!!', cc: '', from: '', replyTo: '', subject: 'process Faild', to: 'ka_mazouz@esi.dz'
+         }
+      }
+
 }
