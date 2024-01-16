@@ -7,12 +7,12 @@ pipeline {
            }
         }
       //  stage('Code analysis') {
-            steps {
-              withSonarQubeEnv("sonar") {
-                bat './gradlew sonar'
-           }
-          }
-       }
+       //     steps {
+         //     withSonarQubeEnv("sonar") {
+         //       bat './gradlew sonar'
+       //    }
+        //  }
+      // }
 
         stage("Build") {
             steps {
