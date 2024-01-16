@@ -40,15 +40,3 @@ dependencies {
     testImplementation 'io.cucumber:cucumber-junit:6.0.0'
     testImplementation'junit:junit:4.12'
 }
-// Skip implicit compilation for sonar tasks
-sonarqube {
-    properties {
-        property 'sonar.gradle.skipCompile', 'true'
-    }
-}
-
-sonar {
-    properties {
-        property 'sonar.gradle.skipCompile', 'true'
-    }
-}
