@@ -13,13 +13,13 @@ pipeline {
             }
             }
         }
-        stage("Code Quality") {
+
+        stage("Build") {
             steps {
-                timeout(time: 1, unit: 'HOURS') {
-                    // Parameter indicates whether to set pipeline to UNSTABLE if Quality Gate fails
-                   // true ie set pipeline to UNSTABLE, false = don't
-                    waitForQualityGate abortPipeline: true
-                }
+                bat './gradlew build'
+                bat './gradlew javadoc'
+                archiveArtifacts 'build/libs/*.jar'
+                archiveArtifacts 'build/docs/'
             }
         }
 
