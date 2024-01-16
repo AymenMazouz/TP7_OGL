@@ -6,7 +6,13 @@ pipeline {
                 bat './gradlew test'
             }
         }
-
+        stage('Code analysis') {
+            steps {
+                withSonarQubeEnv("sonar") {
+                    bat './gradlew sonarqube'
+                }
+            }
+        }
 
 
 
