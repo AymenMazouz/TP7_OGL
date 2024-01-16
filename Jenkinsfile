@@ -10,7 +10,7 @@ pipeline {
             steps {
                 withSonarQubeEnv("sonar") {
                   bat './gradlew sonar'
-             }
+            }
             }
         }
         stage("Code Quality") {
