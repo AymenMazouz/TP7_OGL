@@ -22,11 +22,7 @@ pipeline {
                 archiveArtifacts 'build/docs/'
             }
         }
-        stage("Deploy") {
-            steps {
-                bat './gradlew publish'
-           }
-        }
+
 
         stage("notification") {
             steps {
