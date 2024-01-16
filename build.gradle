@@ -3,8 +3,6 @@ plugins {
     id 'jacoco'
     id "org.sonarqube" version "4.4.1.3373"
     id 'maven-publish'
-
-
 }
 
 group 'com.example'
@@ -20,10 +18,10 @@ repositories {
 publishing {
     repositories {
         maven {
-            url System.getenv("https://mymavenrepo.com/repo/cEmjfkxugPlzLxXg1A2B/")
+            url System.getenv("url")
             credentials {
-                username System.getenv("myMavenRepo")
-                password System.getenv("test0005")
+                username System.getenv("username")
+                password System.getenv("password")
             }
         }
     }
@@ -37,14 +35,8 @@ publishing {
 
 
 
-
-
-
-
 dependencies {
     testImplementation 'io.cucumber:cucumber-java:6.0.0'
     testImplementation 'io.cucumber:cucumber-junit:6.0.0'
-    testImplementation 'junit:junit:4.12'
+    testImplementation'junit:junit:4.12'
 }
-
-
